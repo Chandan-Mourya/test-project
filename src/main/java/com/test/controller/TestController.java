@@ -8,6 +8,6 @@ public class TestController {
 
     @GetMapping
     public String test() {
-        return "Hello World";
+        return "Hello this is my first aws project successfully completed and working fine";
     }
 }
