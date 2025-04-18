@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - master  # or your branch name
+      - master  # This triggers on push to the master branch
 
 jobs:
   deploy:
@@ -23,8 +23,8 @@ jobs:
     - name: Deploy to EC2
       run: |
         ssh ubuntu@65.2.5.28 << 'EOF'
-          cd /home/ubuntu/test-project   # make sure this folder exists
-          git pull origin main
+          cd /home/ubuntu/test-project   # Ensure this folder exists and the repo is cloned
+          git pull origin master          # Correct branch name (master)
           ./mvnw clean package
           pkill -f 'java' || true
           nohup java -jar target/*.jar > app.log 2>&1 &
